@@ -1,58 +1,40 @@
-import { useEffect, useState } from "react";
-
-const sections = ["hero", "about", "skills", "projects", "contact"];
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("hero");
   const [light, setLight] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.6 }
-    );
-
-    sections.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    document.body.className = light ? "light" : "";
+    document.body.classList.toggle("light", light);
   }, [light]);
 
   return (
     <nav className="navbar">
       <span className="brand">Sourav Singh</span>
 
-      <button className="nav-toggle" onClick={() => setOpen(!open)}>
+      <button
+        type="button"
+        className="nav-toggle"
+        onClick={() => setOpen((v) => !v)}
+      >
         ☰
       </button>
 
       <ul className={`nav-links ${open ? "open" : ""}`}>
-        {sections.map(id => (
+        {["hero", "about", "skills", "projects", "contact"].map((id) => (
           <li key={id}>
-            <a
-              href={`#${id}`}
-              className={active === id ? "active" : ""}
-              onClick={() => setOpen(false)}
-            >
+            <a href={`#${id}`} onClick={() => setOpen(false)}>
               {id.charAt(0).toUpperCase() + id.slice(1)}
             </a>
           </li>
         ))}
+
         <li>
-          <button className="theme-btn" onClick={() => setLight(!light)}>
+          <button
+            type="button"
+            className="theme-btn"
+            onClick={() => setLight((v) => !v)}
+          >
             {light ? "🌙" : "☀️"}
           </button>
         </li>

@@ -1,4 +1,4 @@
-/* ========== THEME VARIABLES ========== */
+/* ========== THEME ========== */
 :root {
   --bg: #0b0f19;
   --surface: #020617;
@@ -15,7 +15,7 @@
   --accent: #2563eb;
 }
 
-/* ========== GLOBAL RESET ========== */
+/* ========== RESET ========== */
 * {
   box-sizing: border-box;
 }
@@ -29,23 +29,31 @@ body {
   font-family: system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
-  transition: background 0.3s, color 0.3s;
 }
 
 /* ========== NAVBAR ========== */
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 9999;
   background: var(--surface);
   padding: 1rem 8%;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 }
 
 .brand {
   font-weight: 600;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text);
+  cursor: pointer;
 }
 
 .nav-links {
@@ -61,19 +69,6 @@ body {
   text-decoration: none;
 }
 
-.nav-links a.active {
-  color: var(--accent);
-}
-
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.4rem;
-  color: var(--text);
-  cursor: pointer;
-}
-
 .theme-btn {
   background: none;
   border: none;
@@ -81,7 +76,7 @@ body {
   font-size: 1.2rem;
 }
 
-/* Mobile Navbar */
+/* ========== MOBILE NAVBAR (FIXED) ========== */
 @media (max-width: 768px) {
   .nav-toggle {
     display: block;
@@ -92,8 +87,11 @@ body {
     top: 100%;
     left: 0;
     right: 0;
-    flex-direction: column;
+
     background: var(--surface);
+    flex-direction: column;
+    gap: 1rem;
+
     padding: 1rem 8%;
     display: none;
   }
@@ -105,6 +103,8 @@ body {
 
 /* ========== SECTIONS ========== */
 section {
+  position: relative;
+  z-index: 1;
   padding: 4rem 8%;
   animation: fadeUp 0.6s ease both;
 }
@@ -116,7 +116,7 @@ section {
   }
 }
 
-/* ========== SKILLS GRID ========== */
+/* ========== GRID ========== */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -131,17 +131,6 @@ section {
   text-align: center;
 }
 
-/* ========== BUTTON ========== */
-.btn {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background: var(--accent);
-  color: #020617;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-}
-
 /* ========== PROJECT CARDS ========== */
 .card-grid {
   display: grid;
@@ -153,27 +142,17 @@ section {
   background: var(--surface);
   padding: 1.5rem;
   border-radius: 12px;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s;
 }
 
 .card:hover {
   transform: translateY(-4px);
 }
 
-.card h3 {
-  margin-top: 0;
-}
-
-.card p {
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-/* ========== TAGS ========== */
 .tags {
   display: flex;
-  flex-wrap: wrap;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .tags span {
@@ -181,4 +160,15 @@ section {
   padding: 0.3rem 0.6rem;
   border-radius: 6px;
   font-size: 0.75rem;
+}
+
+/* ========== BUTTON ========== */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: var(--accent);
+  color: #020617;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
 }

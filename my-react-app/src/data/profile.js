@@ -1,17 +1,21 @@
+export const skills = [
+  "Python",
+  "React",
+  "AWS",
+  "Mainframe",
+  "Terraform",
+  "AI / ML",
+];
+
 export const projects = [
   {
     title: "AI RAG Chatbot",
-    description: "LLM chatbot using embeddings and retrieval.",
-    tech: ["Python", "LangChain", "LLM"],
+    description: "LLM-based chatbot using RAG and vector search.",
+    tech: ["Python", "LLM", "LangChain"],
   },
   {
     title: "CI/CD Pipeline",
-    description: "Automated pipeline using AWS & Terraform.",
-    tech: ["AWS", "GitHub Actions", "Terraform"],
-  },
-  {
-    title: "Road Quality Classification",
-    description: "Deep learning model for road analysis.",
-    tech: ["Python", "CNN", "OpenCV"],
+    description: "End-to-end CI/CD using AWS and GitHub Actions.",
+    tech: ["AWS", "Terraform", "CI/CD"],
   },
 ];
